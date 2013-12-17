@@ -1,5 +1,6 @@
 package ning.codelab.hello;
 
+import ning.codelab.hello.datetime.JodaDateTimeConverter;
 import ning.configamajig.v1.ConfigModule;
 
 import com.google.inject.AbstractModule;

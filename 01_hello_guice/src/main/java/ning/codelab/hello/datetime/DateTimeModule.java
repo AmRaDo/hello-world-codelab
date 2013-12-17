@@ -1,4 +1,4 @@
-package ning.codelab.hello;
+package ning.codelab.hello.datetime;
 
 import org.joda.time.format.DateTimeFormatter;
 
