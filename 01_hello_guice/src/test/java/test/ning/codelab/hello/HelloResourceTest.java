@@ -28,7 +28,6 @@ public class HelloResourceTest
         HelloResource theHello = useGuiceToInstantiateTheHelloResource();
         String message = theHello.getMessage();
         Assert.assertNotNull(message);
-        System.out.println(message);
 		assert message.startsWith("hello, world");
     }
 
@@ -43,7 +42,6 @@ public class HelloResourceTest
         
         String message = theHello.getMessage();
         Assert.assertNotNull(message);
-        System.out.println(message);
 		assert message.startsWith(emergencyBroadcastSystem);
     }
     
@@ -61,7 +59,6 @@ public class HelloResourceTest
          
          String message = theHello.getMessage();
          Assert.assertNotNull(message);
-         System.out.println(message);
  		 assert "Hello world good morning @ 08:00".equals(message);
     }
     
@@ -79,7 +76,6 @@ public class HelloResourceTest
          
          String message = theHello.getMessage();
          Assert.assertNotNull(message);
-         System.out.println(message);
  		 assert "Hello world good afternoon @ 12:00".equals(message);
     }
     
@@ -97,7 +93,6 @@ public class HelloResourceTest
          
          String message = theHello.getMessage();
          Assert.assertNotNull(message);
-         System.out.println(message);
  		 assert "Hello world good afternoon @ 15:00".equals(message);
     }
     
@@ -115,7 +110,6 @@ public class HelloResourceTest
          
          String message = theHello.getMessage();
          Assert.assertNotNull(message);
-         System.out.println(message);
  		 assert "Hello world good evening @ 19:00".equals(message);
     }
     
@@ -134,7 +128,6 @@ public class HelloResourceTest
          
          String message = theHello.getMessage();
          Assert.assertNotNull(message);
-         System.out.println(message);
  		 assert "Hello world good night @ 22:00".equals(message);
     }
     
