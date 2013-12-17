@@ -7,15 +7,15 @@ import ning.configamajig.v1.Property;
 /**
  * Configamajig configuration class. The method bodies are ignored at runtime.
  * We make it abstract to help folks not accidentally instantiate it. See
- * {@link HelloServerModule#configure} body for using Configamajig
- * to instantiate this.
+ * {@link HelloServerModule#configure} body for using Configamajig to
+ * instantiate this.
  */
-public abstract class MyConfig
-{
-    @Property(value = "xn.hello.message", missing = "hello, world")
-    public abstract String getMessage();
-    
-    // the JodaDateTimeConverter is used to convert the String value to a DateTime object.
-    @Property(value= "xn.current.time", missing = "" )
-    public abstract DateTime getCurrentTime();
+public abstract class MyConfig {
+	@Property(value = "xn.hello.message", missing = "hello, world")
+	public abstract String getMessage();
+
+	// the JodaDateTimeConverter is used to convert the String value to a
+	// DateTime object.
+	@Property(value = "xn.current.time", missing = "")
+	public abstract DateTime getCurrentTime();
 }

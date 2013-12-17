@@ -11,7 +11,8 @@ import ning.configamajig.v1.Converter;
 /**
  * The Converter class which creates the DateTime instance based on input String.
  * Note: The string is expected in the 'HH:mm' format.
- *
+ * If input String is null or empty, the current system time in IST zone will be
+ * used to create DateTime object.
  */
 public class JodaDateTimeConverter implements Converter<DateTime> {
 
