@@ -8,6 +8,11 @@ import org.joda.time.format.DateTimeFormat;
 
 import ning.configamajig.v1.Converter;
 
+/**
+ * The Converter class which creates the DateTime instance based on input String.
+ * Note: The string is expected in the 'HH:mm' format.
+ *
+ */
 public class JodaDateTimeConverter implements Converter<DateTime> {
 
 	@Override

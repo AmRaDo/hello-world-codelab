@@ -15,6 +15,7 @@ public abstract class MyConfig
     @Property(value = "xn.hello.message", missing = "hello, world")
     public abstract String getMessage();
     
+    // the JodaDateTimeConverter is used to convert the String value to a DateTime object.
     @Property(value= "xn.current.time", missing = "" )
     public abstract DateTime getCurrentTime();
 }

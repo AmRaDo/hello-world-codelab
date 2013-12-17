@@ -19,6 +19,7 @@ public class HelloServerModule extends AbstractModule
          * Install the Configamajig module which populates objects using
          * System properties (or defaults provided in the annotations).
          */
+    	// Adding the DateTime Converter to hte config module for handling DateTime objects.
         install(new ConfigModule().addConverter(JodaDateTimeConverter.class));
 
         /*
