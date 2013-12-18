@@ -1,8 +1,14 @@
 package ning.codelab.hello;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 
 import ning.codelab.hello.xml.HelloXMLMessage;
@@ -27,8 +33,18 @@ import com.google.inject.Inject;
 public class HelloResource
 {
     private final MyConfig config;
+    @Context
+    private HttpHeaders headers;
 
-    @Inject
+    public HttpHeaders getHeaders() {
+		return headers;
+	}
+
+	public void setHeaders(HttpHeaders headers) {
+		this.headers = headers;
+	}
+
+	@Inject
     public HelloResource(MyConfig config)
     {
         this.config = config;
@@ -81,6 +97,12 @@ public class HelloResource
      */
     public String getMessage()
     {
+    	if(headers != null){
+    		List<Locale> acceptableLanguages = headers.getAcceptableLanguages();
+    		if(acceptableLanguages != null){
+    			return Arrays.toString(acceptableLanguages.toArray());
+    		}
+    	}
     	return config.getMessage();
     }
     

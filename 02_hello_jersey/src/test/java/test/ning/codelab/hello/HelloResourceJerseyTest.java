@@ -1,7 +1,13 @@
 package test.ning.codelab.hello;
 
+import java.util.Locale;
+
+import javax.ws.rs.core.HttpHeaders;
+
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import test.ning.codelab.hello.mock.MockHttpHeaders;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -55,5 +61,15 @@ public class HelloResourceJerseyTest
     	 HelloResource theHello = useGuiceToInstantiateTheHelloResource();
     	 HelloXMLMessage mime = theHello.getMIME();
     	 assert "hello, world".equals(mime.getMessage());
+    }
+    
+    @Test
+    public void testHelloWithENJALocale()
+    {
+    	HelloResource theHello = useGuiceToInstantiateTheHelloResource();
+    	MockHttpHeaders headers = new MockHttpHeaders();
+    	headers.setAcceptableLanguages(Locale.ENGLISH, Locale.JAPANESE);
+    	theHello.setHeaders(headers);
+    	assert "[en, ja]".equals(theHello.getMessage());
     }
 }
