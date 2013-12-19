@@ -1,21 +1,21 @@
 package test.ning.codelab.hello;
 
+import java.util.Arrays;
 import java.util.Locale;
 
 import javax.ws.rs.core.HttpHeaders;
 
+import ning.codelab.hello.HelloResource;
+import ning.codelab.hello.HelloResource.HelloMessage;
+import ning.codelab.hello.HelloServerModule;
+import ning.codelab.hello.xml.HelloXMLMessage;
+
+import org.easymock.EasyMock;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import test.ning.codelab.hello.mock.MockHttpHeaders;
-
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-
-import ning.codelab.hello.HelloResource;
-import ning.codelab.hello.HelloServerModule;
-import ning.codelab.hello.HelloResource.HelloMessage;
-import ning.codelab.hello.xml.HelloXMLMessage;
 
 /**
  * HelloResource TestNG module.
@@ -67,9 +67,12 @@ public class HelloResourceJerseyTest
     public void testHelloWithENJALocale()
     {
     	HelloResource theHello = useGuiceToInstantiateTheHelloResource();
-    	MockHttpHeaders headers = new MockHttpHeaders();
-    	headers.setAcceptableLanguages(Locale.ENGLISH, Locale.JAPANESE);
-    	theHello.setHeaders(headers);
+    	HttpHeaders mockHeaders = EasyMock.createMock(HttpHeaders.class);
+    	EasyMock.expect(mockHeaders.getAcceptableLanguages()).andReturn(Arrays.asList(Locale.ENGLISH, Locale.JAPANESE));
+    	EasyMock.replay(mockHeaders);
+/*    	MockHttpHeaders headers = new MockHttpHeaders();
+    	headers.setAcceptableLanguages(Locale.ENGLISH, Locale.JAPANESE);*/
+    	theHello.setHeaders(mockHeaders);
     	assert "[en, ja]".equals(theHello.getMessage());
     }
 }
